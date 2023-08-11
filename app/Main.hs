@@ -15,6 +15,10 @@ import Text.ParserCombinators.Parsec.Number
 -}
 
 type Code = [Statement]
+type Cond = String
+type Value = String
+type Message = String
+type Var = String
 
 
 data Statement
@@ -23,9 +27,6 @@ data Statement
     | While Cond Code
     | Op OpType Var Var
     deriving (Eq, Show)
-
-
-type Var = String
 
 
 data DataType
@@ -44,19 +45,10 @@ data OpType
     deriving (Eq, Show)
 
 
-type Cond = String
-
-
-type Value = String
-
-
-type Message = String
-
 
 -- Print parser
 printParser :: Parser Statement
 printParser = Print <$> (string "printf(\"" >> char '%' >> many1 letter >> string "\"," >> spaces >> many1 letter <* char ')' <* char ';')
-
 
 
 -- Assignment Parsers
