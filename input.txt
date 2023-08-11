@@ -1,0 +1,6 @@
+int a = 5;
+int b = 7;
+while (a < b) {
+    printf("%i", &a);
+    a += 1;
+}
